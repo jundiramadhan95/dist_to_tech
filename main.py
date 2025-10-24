@@ -28,13 +28,17 @@ def send_notifications():
     data = sheet.get_all_values()
 
     for i, row in enumerate(data[1:], start=2):  # Skip header
+        if i <= 1000:
+            continue  # Lewati baris 1000 ke bawah
+        
         kolomF = row[5].strip() if len(row) > 5 else ''
         other_filled = any(cell.strip() for cell in row[:5])
 
         if kolomF == '' and other_filled:
-            nama = row[1] if len(row) > 1 else '(nama kosong)'
-            masalah = row[2] if len(row) > 2 else '(masalah kosong)'
-            message = f'🚨 Ada data baru di baris {i} belum diisi Statusnya!\nNama: {nama}\nMasalah: {masalah}'
+            transaksi = row[1] if len(row) > 1 else '(nomor transaksi kosong)'
+            technician = row[2] if len(row) > 1 else '(technician kosong)'
+            reason = row[3] if len(row) > 2 else '(masalah kosong)'
+            message = f'🚨 Ada data baru di baris {i} belum diisi Statusnya!\nNomor Transaksi: {transaksi}\nTechnician: {technician}\nReason: {reason}'
 
             url = f'https://api.telegram.org/bot{TOKEN}/sendMessage'
             payload = {'chat_id': CHAT_ID, 'text': message}
