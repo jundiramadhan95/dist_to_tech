@@ -1,1 +1,1 @@
-worker: python telegram_notifier/main.py
+worker: python main.py
