@@ -51,9 +51,4 @@ def send_notifications():
 
 # === Loop Tiap 5 Menit ===
 if __name__ == '__main__':
-    while True:
-        try:
-            send_notifications()
-        except Exception as e:
-            print(f'⚠️ Error: {e}')
-        time.sleep(300)  # Tunggu 5 menit
+    send_notifications()
