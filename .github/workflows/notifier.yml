@@ -2,7 +2,8 @@ name: Telegram Notifier
 
 on:
   schedule:
-    - cron: '0 */5 * * *'  # Setiap 5 menit
+#    - cron: '0 */5 * * *'  # Setiap 5 jam
+    - cron: '*/5 * * * *'  # setiap 5 menit
   workflow_dispatch:       # Bisa dijalankan manual juga
 
 jobs:
