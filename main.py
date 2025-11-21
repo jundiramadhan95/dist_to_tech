@@ -14,8 +14,8 @@ creds = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, scope)
 client = gspread.authorize(creds)
 
 # === Access spreadsheet ===
-spreadsheet_name = '1n-Im7JcUfKlpXeiuPIdylAj-V2O6Rqe6bsd7m_mzG_A'  # Ganti sesuai spreadsheet kamu
-sheet = client.open(spreadsheet_name).sheet1
+spreadsheet_id = os.getenv('SPREADSHEET_ID')
+sheet = client.open_by_key(spreadsheet_id).sheet1
 
 # === Telegram setup ===
 TOKEN = os.getenv('TELEGRAM_TOKEN')
