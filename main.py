@@ -43,8 +43,9 @@ def send_notifications():
 
         if kolomF == '' and other_filled:
             nama = row[1] if len(row) > 1 else '(nama kosong)'
-            masalah = row[2] if len(row) > 2 else '(masalah kosong)'
-            message = f'🚨 Baris {i} belum diisi kolom F!\nNama: {nama}\nMasalah: {masalah}'
+            technician = row[2] if len(row) > 2 else '(technician kosong)'
+            masalah = row[3] if len(row) > 3 else '(masalah kosong)'
+            message = f'🚨 Baris {i} belum diisi kolom F!\nNama: {nama}\nTechician: {technician}\nMasalah: {masalah}'
 
             response = requests.post(TELEGRAM_URL, data={'chat_id': CHAT_ID, 'text': message})
             if response.status_code == 200:
